@@ -16,6 +16,8 @@ rerun; every word works in a single glance.
 
 import os
 
+MAX_CHARS = 200
+
 ENTRY = (
     "Tip: go for a walk. While you are gone your AI agent will rewrite "
     "this function three more ways \u2014 confident, fast, and still wrong. "
@@ -23,8 +25,8 @@ ENTRY = (
 )
 
 # The gate refuses anything over 200 characters, so enforce the cap here
-# rather than discovering it on the server.
-assert 1 <= len(ENTRY) <= 200, "entry line must be 1-200 characters"
+# rather than discovering it on the server. The line is 187 characters.
+assert 1 <= len(ENTRY) <= MAX_CHARS, "entry line must be 1-200 characters"
 assert ENTRY.strip(), "entry must not be only whitespace"
 assert "\n" not in ENTRY, "entry must be a single line"
 
